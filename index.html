@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLearn - Student Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>🎓 SmartLearn</h2>
+        <p class="tagline">Learn • Practice • Grow</p>
+
+        <nav>
+            <button class="nav-btn active" data-page="dashboard">🏠 Dashboard</button>
+            <button class="nav-btn" data-page="subjects">📚 Subjects</button>
+            <button class="nav-btn" data-page="planner">📅 AI Study Planner</button>
+            <button class="nav-btn" data-page="quiz">📝 Online Quiz</button>
+            <button class="nav-btn" data-page="notes">📁 Notes & PDF</button>
+            <button class="nav-btn" data-page="progress">📊 Progress</button>
+            <button class="nav-btn" data-page="skills">🚀 Skill Tracker</button>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <header>
+            <div>
+                <h2>Student Learning Dashboard</h2>
+                <p>Welcome back, Student! Keep learning and growing.</p>
+            </div>
+            <div class="profile">👨‍🎓 Student</div>
+        </header>
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="page active">
+            <h1>Dashboard</h1>
+            <p class="subtitle">Your learning overview</p>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>📚 Subjects</h3>
+                    <h2 id="subjectCount">3</h2>
+                </div>
+
+                <div class="card">
+                    <h3>⏰ Study Hours</h3>
+                    <h2 id="studyTotal">0</h2>
+                </div>
+
+                <div class="card">
+                    <h3>📝 Quiz Average</h3>
+                    <h2 id="quizAverage">0%</h2>
+                </div>
+
+                <div class="card">
+                    <h3>🚀 Skills</h3>
+                    <h2 id="skillCount">3</h2>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>Today's Tasks</h2>
+
+                <label class="task">
+                    <input type="checkbox"> Revise C Programming
+                </label>
+
+                <label class="task">
+                    <input type="checkbox"> Complete Mathematics
+                </label>
+
+                <label class="task">
+                    <input type="checkbox"> Study Physics
+                </label>
+            </div>
+        </section>
+
+        <!-- Subjects -->
+        <section id="subjects" class="page">
+            <h1>Subject Selection</h1>
+            <p class="subtitle">Choose your learning subjects</p>
+
+            <div class="panel" id="subjectList">
+                <label class="task">
+                    <input type="checkbox" value="C Programming" checked>
+                    C Programming
+                </label>
+
+                <label class="task">
+                    <input type="checkbox" value="Mathematics" checked>
+                    Mathematics
+                </label>
+
+                <label class="task">
+                    <input type="checkbox" value="Physics" checked>
+                    Physics
+                </label>
+
+                <label class="task">
+                    <input type="checkbox" value="Chemistry">
+                    Chemistry
+                </label>
+
+                <label class="task">
+                    <input type="checkbox" value="Data Analytics">
+                    Data Analytics
+                </label>
+
+                <label class="task">
+                    <input type="checkbox" value="English">
+                    English
+                </label>
+
+                <button id="saveSubjects">Save Subjects</button>
+                <p id="subjectMessage" class="message"></p>
+            </div>
+        </section>
+
+        <!-- Study Planner -->
+        <section id="planner" class="page">
+            <h1>AI Study Planner</h1>
+            <p class="subtitle">Create your daily study schedule</p>
+
+            <div class="panel">
+                <label for="studySubject">Subject Name</label>
+                <input id="studySubject" placeholder="Example: Mathematics">
+
+                <label for="studyHours">Available Study Hours</label>
+                <input id="studyHours" type="number"
+                       min="0.1" max="24" step="0.1"
+                       placeholder="Example: 2">
+
+                <label for="studyGoal">Your Study Goal</label>
+                <input id="studyGoal" placeholder="Example: Complete Unit 1">
+
+                <button id="generatePlan">Generate Study Plan</button>
+
+                <div id="planResult" class="result" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- Quiz -->
+        <section id="quiz" class="page">
+            <h1>Online Quiz</h1>
+            <p class="subtitle">Test your knowledge</p>
+
+            <div class="panel">
+                <div class="question">
+                    <p>1. Which language is used for web structure?</p>
+
+                    <label><input type="radio" name="q1" value="HTML"> HTML</label>
+                    <label><input type="radio" name="q1" value="CSS"> CSS</label>
+                    <label><input type="radio" name="q1" value="Python"> Python</label>
+                </div>
+
+                <div class="question">
+                    <p>2. Which language is used for web styling?</p>
+
+                    <label><input type="radio" name="q2" value="CSS"> CSS</label>
+                    <label><input type="radio" name="q2" value="C"> C</label>
+                    <label><input type="radio" name="q2" value="Java"> Java</label>
+                </div>
+
+                <button id="submitQuiz">Submit Quiz</button>
+                <button id="resetQuiz" class="secondary">Reset Quiz</button>
+
+                <h3 id="quizResult" class="result" aria-live="polite"></h3>
+            </div>
+        </section>
+
+        <!-- Notes -->
+        <section id="notes" class="page">
+            <h1>Notes & PDF Upload</h1>
+            <p class="subtitle">Select your study materials</p>
+
+            <div class="panel">
+                <label for="fileInput">Choose Files</label>
+
+                <input type="file" id="fileInput" multiple
+                       accept=".pdf,.doc,.docx,.txt">
+
+                <ul id="fileList"></ul>
+
+                <p class="small-note">
+                    Files are selected locally in this browser.
+                    They are not uploaded to a server.
+                </p>
+            </div>
+        </section>
+
+        <!-- Progress -->
+        <section id="progress" class="page">
+            <h1>Student Progress</h1>
+            <p class="subtitle">Track your learning progress</p>
+
+            <div class="panel progress-panel">
+                <label>C Programming - 75%</label>
+                <progress value="75" max="100"></progress>
+
+                <label>Mathematics - 60%</label>
+                <progress value="60" max="100"></progress>
+
+                <label>Physics - 45%</label>
+                <progress value="45" max="100"></progress>
+
+                <label>Chemistry - 30%</label>
+                <progress value="30" max="100"></progress>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="page">
+            <h1>Skill Development Tracker</h1>
+            <p class="subtitle">Build and track your skills</p>
+
+            <div class="panel">
+                <label for="skillName">Enter New Skill</label>
+                <input id="skillName" placeholder="Example: Python Programming">
+
+                <button id="addSkill">Add Skill</button>
+
+                <ul id="skillList">
+                    <li>Programming - 70%</li>
+                    <li>Communication - 65%</li>
+                    <li>Problem Solving - 55%</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 SmartLearn | Student Learning Platform</p>
+        </footer>
+
+    </main>
+</div>
+</body>
+</html>
